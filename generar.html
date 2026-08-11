@@ -213,9 +213,10 @@
   <div class="form-group">
     <label>Número de boletos</label>
     <select id="inputBoletos">
+      <option value="" selected>&nbsp;</option>
       <option value="1">1 boleto</option>
       <option value="2">2 boletos</option>
-      <option value="3" selected>3 boletos</option>
+      <option value="3">3 boletos</option>
       <option value="4">4 boletos</option>
       <option value="5">5 boletos</option>
       <option value="6">6 boletos</option>
@@ -261,12 +262,16 @@
 
   function construirMensaje(familia, tipo, n, mesa, url){
     var saludo = tipoLabels[tipo] + ' ' + familia;
-    var pase = 'PASE PARA ' + n + (n === 1 ? ' PERSONA' : ' PERSONAS') + ' 🎟️';
-    if(mesa) pase += '\nMESA ' + mesa + ' 🍽️';
+    var pase = '';
+    if(n){
+      pase = 'PASE PARA ' + n + (n === 1 ? ' PERSONA' : ' PERSONAS') + ' 🎟️';
+      if(mesa) pase += '\nMESA ' + mesa + ' 🍽️';
+      pase += '\n';
+    }
     return '¡Hola! ✨ ' + saludo + '\n' +
       'Nos casamos y queremos invitarte a celebrar con nosotros. 💍\n' +
       'Esperamos poder contar con tu presencia. 💐\n\n' +
-      pase + '\n' +
+      pase +
       'Click para ver la invitación. 💌\n' +
       url + '\n\n' +
       'Por favor confirma tu asistencia antes del 1 de Noviembre. 🙏';
@@ -291,15 +296,16 @@
     } else {
       base = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/index.html');
     }
-    urlGenerada = base + '?f=' + encodeURIComponent(familia) + '&t=' + tipo + '&b=' + boletos;
+    urlGenerada = base + '?f=' + encodeURIComponent(familia) + '&t=' + tipo;
+    if(boletos) urlGenerada += '&b=' + boletos;
     if(mesa) urlGenerada += '&m=' + encodeURIComponent(mesa);
 
-    var n = parseInt(boletos, 10);
+    var n = boletos ? parseInt(boletos, 10) : 0;
     mensajeGenerado = construirMensaje(familia, tipo, n, mesa, urlGenerada);
 
     document.getElementById('resLabel').textContent = 'Enlace generado para (' + tipoLabels[tipo] + '):';
     document.getElementById('resFamilyName').textContent = familia;
-    document.getElementById('resBoletosText').textContent = n + (n === 1 ? ' boleto' : ' boletos') + (mesa ? ' · Mesa ' + mesa : '');
+    document.getElementById('resBoletosText').textContent = (n ? (n + (n === 1 ? ' boleto' : ' boletos')) : 'Sin boletos') + (mesa ? ' · Mesa ' + mesa : '');
     document.getElementById('resUrl').textContent = urlGenerada;
     document.getElementById('resMensaje').textContent = mensajeGenerado;
 
@@ -329,7 +335,7 @@
   function nuevaInvitacion(){
     document.getElementById('inputFamilia').value = '';
     document.getElementById('inputTipo').value = 'familia';
-    document.getElementById('inputBoletos').value = '3';
+    document.getElementById('inputBoletos').value = '';
     document.getElementById('inputMesa').value = '';
     urlGenerada = '';
     mensajeGenerado = '';

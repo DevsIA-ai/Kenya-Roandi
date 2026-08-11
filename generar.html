@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Generar Invitación · Kenya &amp; Axel</title>
+<title>Generar Invitación · Kenya &amp; Roandi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Allura&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -161,6 +161,16 @@
   .btn-open:hover { background:var(--gold-dark); }
   .btn-copy:active, .btn-open:active { transform:scale(.97); }
 
+  .btn-nueva {
+    width:100%; margin-top:.85rem; padding:.7rem;
+    background:transparent; border:1px dashed rgba(203,183,155,.6);
+    border-radius:50px;
+    font-family:var(--sans); font-size:.56rem; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--text-muted); cursor:pointer;
+    transition:background .3s, color .3s, border-color .3s;
+  }
+  .btn-nueva:hover { background:rgba(203,183,155,.1); color:var(--gold-dark); border-color:var(--gold); }
+
   .btn-confirmaciones {
     display:inline-flex; align-items:center; gap:.5rem;
     margin-top:1.75rem; padding:.75rem 1.5rem;
@@ -180,12 +190,10 @@
 </head>
 <body>
 
-<a href="../../Web/" style="display:block;margin-bottom:1.5rem;text-align:center;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text-muted);text-decoration:none">← Ver más invitaciones</a>
-
 <div class="card">
   <p class="card-eyebrow">✦ &nbsp;Generador de Invitaciones &nbsp;✦</p>
   <div class="card-hr"></div>
-  <h1 class="card-title">Kenya &amp; Axel</h1>
+  <h1 class="card-title">Kenya &amp; Roandi</h1>
   <p class="card-sub">11 · 12 · 2026</p>
 
   <div class="form-group">
@@ -237,6 +245,7 @@
       <button class="btn-copy" id="btnCopy" onclick="copiarMensaje()">Copiar mensaje</button>
       <button class="btn-open" onclick="abrirInvitacion()">Abrir ✦</button>
     </div>
+    <button class="btn-nueva" onclick="nuevaInvitacion()">↻ Generar otra invitación</button>
   </div>
 </div>
 
@@ -315,6 +324,21 @@
 
   function abrirInvitacion(){
     if(urlGenerada) window.open(urlGenerada, '_blank');
+  }
+
+  function nuevaInvitacion(){
+    document.getElementById('inputFamilia').value = '';
+    document.getElementById('inputTipo').value = 'familia';
+    document.getElementById('inputBoletos').value = '3';
+    document.getElementById('inputMesa').value = '';
+    urlGenerada = '';
+    mensajeGenerado = '';
+
+    var res = document.getElementById('resultado');
+    res.classList.remove('visible');
+
+    document.querySelector('.card').scrollIntoView({ behavior:'smooth', block:'start' });
+    document.getElementById('inputFamilia').focus();
   }
 
   // Permitir Enter en el campo de familia

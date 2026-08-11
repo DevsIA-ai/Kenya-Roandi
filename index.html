@@ -274,7 +274,7 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
 /* ==============================
    STORY
    ============================== */
-#story { background:var(--white); }
+#story { background:linear-gradient(160deg,#ffffff,#eef0e6); }
 .story-grid {
   display:flex; flex-direction:column; align-items:center; text-align:center;
   gap:2.25rem; margin-top:3rem;
@@ -301,7 +301,7 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
 /* ==============================
    DETAILS
    ============================== */
-#details { background:linear-gradient(160deg,#fdf9f4,var(--warm)); }
+#details { background:linear-gradient(160deg,#fdf9f4,var(--warm) 70%,#eef0e6); }
 .detail-cards {
   display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
   gap:1.5rem; margin:3rem 0;
@@ -398,7 +398,7 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
    GALLERY
    ============================== */
 #gallery {
-  background:linear-gradient(160deg,var(--warm),var(--cream));
+  background:linear-gradient(160deg,var(--warm),#eef0e6);
   padding:5rem 2.5rem; position:relative; overflow:hidden;
 }
 #gallery::before {
@@ -477,7 +477,7 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
 /* ==============================
    DRESS CODE
    ============================== */
-#dresscode { background:var(--white); text-align:center; }
+#dresscode { background:linear-gradient(160deg,#ffffff,#eef0e6); text-align:center; }
 .dress-badge {
   display:inline-block; padding:.5rem 1.75rem;
   border:1px solid var(--gold); border-radius:50px;
@@ -522,7 +522,7 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
 /* ==============================
    GIFTS
    ============================== */
-#gifts { background:linear-gradient(160deg,#fdf9f4,var(--warm)); text-align:center; }
+#gifts { background:linear-gradient(160deg,#fdf9f4,var(--warm) 70%,#eef0e6); text-align:center; }
 .gift-cards {
   display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:1.5rem; margin-top:2.75rem;
@@ -729,7 +729,7 @@ body.env-open { overflow:hidden; }
 .env-top-flap {
   position:absolute; top:0; left:-1px; right:-1px;
   height:55%;
-  background:linear-gradient(165deg,#748a6b,#465643);
+  background:linear-gradient(165deg,#c7cfbc,#aeb7a8);
   clip-path:polygon(0 0,100% 0,50% 90%);
   transform-origin:top center;
   transform:rotateX(0deg);
@@ -743,21 +743,21 @@ body.env-open { overflow:hidden; }
 .env-side-l {
   position:absolute; left:0; bottom:0;
   width:55%; height:62%;
-  background:#57694f;
+  background:#b3bda5;
   clip-path:polygon(0 0,0 100%,100% 100%);
   z-index:1;
 }
 .env-side-r {
   position:absolute; right:0; bottom:0;
   width:55%; height:62%;
-  background:#57694f;
+  background:#b3bda5;
   clip-path:polygon(100% 0,0 100%,100% 100%);
   z-index:1;
 }
 .env-bottom-v {
   position:absolute; bottom:0; left:0; right:0;
   height:60%;
-  background:#647a5c;
+  background:#c2cab2;
   clip-path:polygon(0 100%,50% 2%,100% 100%);
   z-index:1;
 }
@@ -1057,7 +1057,7 @@ body.env-open { overflow:hidden; }
 </section>
 
 <!-- ======================== PADRES ======================== -->
-<section id="padres" style="background:var(--cream);text-align:center;">
+<section id="padres" style="background:linear-gradient(160deg,var(--cream),#eef0e6);text-align:center;">
   <div class="container">
     <span class="eyebrow reveal">Con Amor</span>
     <h2 class="section-title reveal">La bendición de <em>nuestros padres</em></h2>
